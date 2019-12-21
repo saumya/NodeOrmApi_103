@@ -3,8 +3,13 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 
-//var mongoURL = appconfig.mongo.url ;
+
+var mongoURL = MONGODB_ADDON_URI ;
+
+console.log('mongoURL = '+mongoURL);
+
 /*
+var mongoURL = appconfig.mongo.url ;
 var mongoURL = MONGODB_ADDON_URI ;
 
 mongoose.connect( mongoURL , 
