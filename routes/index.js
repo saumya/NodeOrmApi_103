@@ -6,16 +6,12 @@ var mongoose = require('mongoose');
 
 var mongoURL = process.env.MONGODB_ADDON_URI ;
 
+/*
 console.log('------------------------------');
 console.log('mongoURL = '+mongoURL);
 console.log('------------------------------');
+*/
 
-mongoose.connect( mongoURL , 
-										{ useUnifiedTopology: true, 
-											useNewUrlParser: true } );
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'DB connection error:'));
 
 /*
 var mongoURL = appconfig.mongo.url ;
@@ -31,6 +27,12 @@ db.on('error', console.error.bind(console, 'DB connection error:'));
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Home' });
+  console.log('------------------ Route / ---------------------');
+  mongoose.connect( mongoURL , 
+										{ useUnifiedTopology: true, 
+											useNewUrlParser: true } );
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'DB connection error:'));
   //
   db.once('open', function(){
 	  	var kittySchema = new mongoose.Schema({ name: String });
@@ -48,7 +50,8 @@ router.get('/', function(req, res, next) {
         }
         //console.log(kittens);
         res.send(kittens);
-      })
+      });
+  	console.log('------------------ Route / : END ---------------------');
   });
   //
   //res.send("Hello");
