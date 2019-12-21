@@ -22,7 +22,8 @@ router.get('/', function(req, res, next) {
         var greeting = this.name
         ? "Meow name is " + this.name
         : "I don't have a name";
-        console.log(console.log( '============ '+ greeting +' =========================');
+        //
+        console.log( '============ '+ greeting +' =========================');
       }
       //
       var Kitten = mongoose.model('Kitten', kittySchema);
