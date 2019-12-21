@@ -12,6 +12,20 @@ console.log('mongoURL = '+mongoURL);
 console.log('------------------------------');
 */
 
+mongoose.connect( mongoURL , 
+										{ useUnifiedTopology: true, 
+											useNewUrlParser: true } );
+
+var kittySchema = new mongoose.Schema({ name: String });
+
+kittySchema.methods.speak = function () {
+  var greeting = this.name
+  ? "Meow name is " + this.name
+  : "I don't have a name";
+	console.log(greeting);
+}
+
+var Kitten = mongoose.model('Kitten', kittySchema);
 
 /*
 var mongoURL = appconfig.mongo.url ;
@@ -28,25 +42,13 @@ db.on('error', console.error.bind(console, 'DB connection error:'));
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Home' });
   console.log('------------------ Route / ---------------------');
-  mongoose.connect( mongoURL , 
-										{ useUnifiedTopology: true, 
-											useNewUrlParser: true } );
+  
 	var db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'DB connection error:'));
+	db.on('error', console.error.bind(console, 'DB connection error:-------------'));
   //
   
   db.once('open', function(){
   	console.log('------------ DB:Open -------------');
-
-  	var kittySchema = new mongoose.Schema({ name: String });
-  	kittySchema.methods.speak = function () {
-	      var greeting = this.name
-	      ? "Meow name is " + this.name
-	      : "I don't have a name";
-	    	console.log(greeting);
-    	}
-    var Kitten = mongoose.model('Kitten', kittySchema);
-  	
   	/*
 	  	var kittySchema = new mongoose.Schema({ name: String });
 	    kittySchema.methods.speak = function () {
