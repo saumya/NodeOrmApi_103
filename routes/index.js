@@ -4,9 +4,18 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 
-var mongoURL = MONGODB_ADDON_URI ;
+var mongoURL = process.env.MONGODB_ADDON_URI ;
 
+console.log('------------------------------');
 console.log('mongoURL = '+mongoURL);
+console.log('------------------------------');
+
+mongoose.connect( mongoURL , 
+										{ useUnifiedTopology: true, 
+											useNewUrlParser: true } );
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'DB connection error:'));
 
 /*
 var mongoURL = appconfig.mongo.url ;
