@@ -44,7 +44,9 @@ router.get('/', function(req, res, next) {
   console.log('------------------ Route / ---------------------');
   
 	var db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'DB connection error:-------------'));
+	db.on('error', function(){
+		console.log('DB connection error:-------------');
+	});
   //
   
   db.once('open', function(){
@@ -67,7 +69,7 @@ router.get('/', function(req, res, next) {
         res.send(kittens);
       });
       */
-      
+
       Kitten.find(function (err, kittens) {
         if (err) {
           res.send(err);
@@ -81,7 +83,7 @@ router.get('/', function(req, res, next) {
   });
   
   //
-  res.send("Hello");
+  //res.send("Hello");
 });
 
 module.exports = router;
