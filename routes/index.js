@@ -62,7 +62,7 @@ router.get('/', function(req, res, next) {
       });
       */
 
-      /*
+      
       // get from DB
       Kitten.find(function (err, kittens) {
         if (err) {
@@ -72,11 +72,11 @@ router.get('/', function(req, res, next) {
         console.log(kittens);
         res.send(kittens);
       })
-      */
+      
       //
     });
   //
-  res.send("Hello");
+  //res.send("Hello");
 });
 
 module.exports = router;
