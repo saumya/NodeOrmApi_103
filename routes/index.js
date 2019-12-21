@@ -15,14 +15,14 @@ router.get('/', function(req, res, next) {
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
       // we're connected!
-      console.log( 'Connected' );
+      console.log( '============ Connected =========================' );
       //
       var kittySchema = new mongoose.Schema({ name: String });
       kittySchema.methods.speak = function () {
         var greeting = this.name
         ? "Meow name is " + this.name
         : "I don't have a name";
-        console.log(greeting);
+        console.log(console.log( '============ '+ greeting +' =========================');
       }
       //
       var Kitten = mongoose.model('Kitten', kittySchema);
