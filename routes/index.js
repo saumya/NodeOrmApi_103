@@ -34,6 +34,7 @@ router.get('/', function(req, res, next) {
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'DB connection error:'));
   //
+  /*
   db.once('open', function(){
 	  	var kittySchema = new mongoose.Schema({ name: String });
 	    kittySchema.methods.speak = function () {
@@ -53,8 +54,9 @@ router.get('/', function(req, res, next) {
       });
   	console.log('------------------ Route / : END ---------------------');
   });
+  */
   //
-  //res.send("Hello");
+  res.send("Hello");
 });
 
 module.exports = router;
