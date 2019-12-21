@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-/*
+
 var mongoose = require('mongoose');
 //
 var mongoURL = process.env.MONGODB_ADDON_URI;
@@ -23,7 +23,7 @@ var kittySchema = new mongoose.Schema({ name: String });
       //
 var Kitten = mongoose.model('Kitten', kittySchema);
 //
-*/
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
