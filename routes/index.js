@@ -37,6 +37,9 @@ router.get('/', function(req, res, next) {
   
   db.once('open', function(){
   	console.log('------------ DB:Open -------------');
+
+  	var kittySchema = new mongoose.Schema({ name: String });
+  	
   	/*
 	  	var kittySchema = new mongoose.Schema({ name: String });
 	    kittySchema.methods.speak = function () {
