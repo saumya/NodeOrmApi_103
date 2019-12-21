@@ -31,7 +31,27 @@ db.on('error', console.error.bind(console, 'DB connection error:'));
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Home' });
-  res.send("Hello");
+  //
+  db.once('open', function(){
+	  	var kittySchema = new mongoose.Schema({ name: String });
+	    kittySchema.methods.speak = function () {
+	      var greeting = this.name
+	      ? "Meow name is " + this.name
+	      : "I don't have a name";
+	    	console.log(greeting);
+    	}
+    	var Kitten = mongoose.model('Kitten', kittySchema);
+    	Kitten.find(function (err, kittens) {
+        if (err) {
+          res.send(err);
+          return console.error(err); 
+        }
+        //console.log(kittens);
+        res.send(kittens);
+      })
+  });
+  //
+  //res.send("Hello");
 });
 
 module.exports = router;
