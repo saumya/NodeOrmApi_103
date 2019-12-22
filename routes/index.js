@@ -102,14 +102,28 @@ router.get('/', function(req, res, next) {
 																	useUnifiedTopology: true, 
 																	useNewUrlParser: true 
 																},function(error){
-																		console.log('---------: I : Error   :----------');
+																		
 																		if(error){
+																			console.log('---------: Error :----------');
 																			throw error;
 																		}
-																		//console.log('---------: I : Error / :----------');
+
 																		console.log('==============================');
 																		console.log('---------: SUCCESS :----------');
 																		console.log('==============================');
+																		Kitten.find(function (err, kittens) {
+																			if (err) {
+																				console.log('---------: Error : kittens : ----------');
+																				//res.send(err);
+																				//console.error(err); 
+																				return false;
+																			}
+																			//console.log(kittens);
+																			//res.send(kittens);
+																			console.log('---------: SUCCESS : kittens : ----------');
+																			console.log(kittens);
+																		});
+																		
 																	});
 
   //
