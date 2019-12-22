@@ -42,12 +42,12 @@ db.on('error', console.error.bind(console, 'DB connection error:'));
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Home' });
   console.log('------------------ Route / ---------------------');
-  /*
+  
 	var db = mongoose.connection;
 	db.on('error', function(){
 		console.log('DB connection error:-------------');
 	});
-	*/
+
   //
   
   db.once('open', function(){
