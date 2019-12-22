@@ -6,17 +6,26 @@ var mongoose = require('mongoose');
 
 var mongoURL = process.env.MONGODB_ADDON_URI ;
 
-/*
-mongoose.connect( mongoURL , { 	useUnifiedTopology: true, 
-																useNewUrlParser: true 
-															}).catch( function(error){
-																	console.log('----------: I : Error :-----------');
-																	console.log(error);
-																	console.log('---------: I : Error / :----------');
-																} );
-*/
 
-//
+// Connection : 1st Way :------------------------------------------------------------
+mongoose.connect( mongoURL , { 	
+																useUnifiedTopology: true, 
+																useNewUrlParser: true 
+															}).catch(function(error){
+																	if (error) {
+																		console.log('---------: I : Error   :----------');
+																		//throw error;
+																		console.log( error );
+																		console.log('---------: I : Error / :----------');
+																	}
+																	console.log('==============================');
+																	console.log('---------: SUCCESS :----------');
+																	console.log('==============================');
+																});
+
+
+/*
+// Connection : 2nd Way :------------------------------------------------------------
 mongoose.connect( mongoURL , { 	useUnifiedTopology: true, 
 																useNewUrlParser: true 
 															}).then(function(){
@@ -28,6 +37,7 @@ mongoose.connect( mongoURL , { 	useUnifiedTopology: true,
 																console.log(error);
 																console.log('---------: I : Error / :----------');
 															});
+*/
 
 
 mongoose.connection.on('error', function(error){
