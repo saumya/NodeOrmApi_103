@@ -114,21 +114,22 @@ router.get('/', function(req, res, next) {
 																		Kitten.find(function (err, kittens) {
 																			if (err) {
 																				console.log('---------: Error : kittens : ----------');
-																				//res.send(err);
+																				res.send( err );
 																				//console.error(err); 
 																				return false;
 																			}
 																			//console.log(kittens);
 																			//res.send(kittens);
 																			console.log('---------: SUCCESS : kittens : ----------');
-																			console.log(kittens);
+																			//console.log(kittens);
+																			res.send( kittens );
 																		});
-																		
+
 																	});
 
   //
   //res.send("Hello");
-  res.send( new Date() );
+  //res.send( new Date() );
 });
 
 module.exports = router;
