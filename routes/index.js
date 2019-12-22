@@ -70,6 +70,7 @@ router.get('/', function(req, res, next) {
       });
       */
 
+      /*
       Kitten.find(function (err, kittens) {
         if (err) {
           res.send(err);
@@ -78,7 +79,7 @@ router.get('/', function(req, res, next) {
         //console.log(kittens);
         res.send(kittens);
       });
-
+      */
   	console.log('------------------ DB:Open / : END ---------------------');
   });
   
