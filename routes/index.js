@@ -15,6 +15,9 @@ console.log('------------------------------');
 mongoose.connect( mongoURL , 
 										{ useUnifiedTopology: true, 
 											useNewUrlParser: true } );
+mongoose.connection.on('error', function(){
+	console.log('-------: I : ERROR :-------');
+});
 
 var kittySchema = new mongoose.Schema({ name: String });
 
