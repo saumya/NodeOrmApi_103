@@ -20,8 +20,10 @@ mongoose.connect( mongoURL ,
 												console.log('---------: I : Error / :----------');
 											} );
 
-mongoose.connection.on('error', function(){
-	console.log('-------: I : ERROR :-------');
+mongoose.connection.on('error', function(error){
+	console.log('--------: mongoose.connection.on : ERROR :--------');
+	console.log(error);
+	console.log('-------: mongoose.connection.on : ERROR / :-------');
 });
 
 var kittySchema = new mongoose.Schema({ name: String });
