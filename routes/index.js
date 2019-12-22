@@ -14,7 +14,12 @@ console.log('------------------------------');
 
 mongoose.connect( mongoURL , 
 										{ useUnifiedTopology: true, 
-											useNewUrlParser: true } );
+											useNewUrlParser: true } ).catch( function(error){
+												console.log('----------: I : Error :-----------');
+												console.log(error);
+												console.log('---------: I : Error / :----------');
+											} );
+
 mongoose.connection.on('error', function(){
 	console.log('-------: I : ERROR :-------');
 });
