@@ -7,39 +7,10 @@ var appconfig = require('../app.config');
 
 
 //var mongoURL = process.env.MONGODB_ADDON_URI ;
-
-var mongoURL = appconfig.mongo.url ;
-
-/*
-// Connection : 1st Way :------------------------------------------------------------
-mongoose.connect( mongoURL , { 	
-																useUnifiedTopology: true, 
-																useNewUrlParser: true 
-															}).catch(function(error){
-																	if (error) {
-																		console.log('---------: I : Error   :----------');
-																		//throw error;
-																		console.log( error );
-																		console.log('---------: I : Error / :----------');
-																	}
-																});
-
-*/
-/*
-// Connection : 2nd Way :------------------------------------------------------------
-mongoose.connect( mongoURL , { 	useUnifiedTopology: true, 
-																useNewUrlParser: true 
-															}).then(function(){
-																console.log('==============================');
-																console.log('---------: SUCCESS :----------');
-																console.log('==============================');
-															},function(error){
-																console.log('---------: I : Error   :----------');
-																console.log(error);
-																console.log('---------: I : Error / :----------');
-															});
-*/
-
+var mongoURL = process.env.MONGODB_ADDON_URI || appconfig.mongo.url ;
+//
+// mongoose.connect(mongoURL , {}, function(error){});
+// mongoose.connect(mongoURL,{}).then(function(){},function(error){});
 
 mongoose.connection.on('error', function(error){
 	console.log('--------: mongoose.connection.on : ERROR :--------');
@@ -73,35 +44,6 @@ db.on('error', console.error.bind(console, 'DB connection error:'));
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Home' });
   console.log('------------------ Route / ---------------------');
-
-  /*
-	var db = mongoose.connection;
-	db.on('error', function(){
-		console.log('DB connection error:-------------');
-	});
-  //
-  db.once('open', function(){
-  	console.log('------------ DB:Open -------------');
-  	
-	  var kittySchema = new mongoose.Schema({ name: String });
-    kittySchema.methods.speak = function () {
-      var greeting = this.name
-      ? "Meow name is " + this.name
-      : "I don't have a name";
-    	console.log(greeting);
-  	}
-  	var Kitten = mongoose.model('Kitten', kittySchema);
-  	Kitten.find(function (err, kittens) {
-      if (err) {
-        res.send(err);
-        return console.error(err); 
-      }
-      //console.log(kittens);
-      res.send(kittens);
-    });
-  	console.log('------------------ DB:Open / : END ---------------------');
-  });
-  */
   mongoose.connect( mongoURL , { 	
 																	useUnifiedTopology: true, 
 																	useNewUrlParser: true 
