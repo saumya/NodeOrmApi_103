@@ -3,8 +3,12 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 
+var appconfig = require('../app.config');
 
-var mongoURL = process.env.MONGODB_ADDON_URI ;
+
+//var mongoURL = process.env.MONGODB_ADDON_URI ;
+
+var mongoURL = appconfig.mongo.url ;
 
 /*
 // Connection : 1st Way :------------------------------------------------------------
@@ -111,6 +115,7 @@ router.get('/', function(req, res, next) {
 																		console.log('==============================');
 																		console.log('---------: SUCCESS :----------');
 																		console.log('==============================');
+																		
 																		Kitten.find(function (err, kittens) {
 																			if (err) {
 																				console.log('---------: Error : kittens : ----------');
