@@ -5,12 +5,8 @@ var mongoose = require('mongoose');
 
 var appconfig = require('../app.config');
 
-
-//var mongoURL = process.env.MONGODB_ADDON_URI ;
 var mongoURL = process.env.MONGODB_ADDON_URI || appconfig.mongo.url ;
 //
-// mongoose.connect(mongoURL , {}, function(error){});
-// mongoose.connect(mongoURL,{}).then(function(){},function(error){});
 
 mongoose.connection.on('error', function(error){
 	console.log('--------: mongoose.connection.on : ERROR :--------');
@@ -28,17 +24,6 @@ kittySchema.methods.speak = function () {
 }
 
 var Kitten = mongoose.model('Kitten', kittySchema);
-
-/*
-var mongoURL = appconfig.mongo.url ;
-var mongoURL = MONGODB_ADDON_URI ;
-
-mongoose.connect( mongoURL , 
-										{ useUnifiedTopology: true, 
-											useNewUrlParser: true } );
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'DB connection error:'));
-*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
