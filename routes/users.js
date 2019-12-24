@@ -6,15 +6,15 @@ var mongoose = require('mongoose');
 //var Kitten = require('../models/kitten.model');
 var  kittenController = require('../controllers/kitten.controller');
 
-/*
+
 // remote
 var mongoURL = process.env.MONGODB_ADDON_URI ;
-*/
 
+/*
 // local
 var appconfig = require('../app.config');
 var mongoURL = appconfig.mongo.url ;
-
+*/
 
 
 //
