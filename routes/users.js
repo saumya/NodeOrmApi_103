@@ -3,15 +3,18 @@ var router = express.Router();
 //
 var mongoose = require('mongoose');
 
-var Kitten = require('../models/kitten.model');
+//var Kitten = require('../models/kitten.model');
+var  kittenController = require('../controllers/kitten.controller');
 
+/*
 // remote
 var mongoURL = process.env.MONGODB_ADDON_URI ;
-/*
+*/
+
 // local
 var appconfig = require('../app.config');
 var mongoURL = appconfig.mongo.url ;
-*/
+
 
 
 //
@@ -40,20 +43,7 @@ router.get('/', function(req, res, next) {
 																		console.log('---------: SUCCESS :----------');
 																		console.log('==============================');
 																		
-																		Kitten.find(function (err, kittens) {
-																			if (err) {
-																				console.log('---------: Error : kittens : ----------');
-																				res.send( err );
-																				//console.error(err); 
-																				return false;
-																			}
-																			//console.log(kittens);
-																			//res.send(kittens);
-																			console.log('---------: SUCCESS : kittens : ----------');
-																			//console.log(kittens);
-																			res.send( kittens );
-																		});
-
+																		kittenController.getAllTheKittens(req,res);
 																	});
 });
 
