@@ -3,10 +3,17 @@ var router = express.Router();
 //
 var mongoose = require('mongoose');
 
-var appconfig = require('../app.config');
 var Kitten = require('../models/kitten.model');
 
-var mongoURL = process.env.MONGODB_ADDON_URI || appconfig.mongo.url ;
+// remote
+var mongoURL = process.env.MONGODB_ADDON_URI ;
+/*
+// local
+var appconfig = require('../app.config');
+var mongoURL = appconfig.mongo.url ;
+*/
+
+
 //
 // Listen for the errors
 mongoose.connection.on('error', function(error){
