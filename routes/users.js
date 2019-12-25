@@ -29,22 +29,19 @@ mongoose.connection.on('error', function(error){
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
   console.log('------------------ Route users/ ---------------------');
-  mongoose.connect( mongoURL , { 	
-																	useUnifiedTopology: true, 
-																	useNewUrlParser: true 
-																},function(error){
-																		
-																		if(error){
-																			console.log('---------: Error :----------');
-																			throw error;
-																		}
-
-																		console.log('==============================');
-																		console.log('---------: SUCCESS :----------');
-																		console.log('==============================');
-																		
-																		kittenController.getAllTheKittens(req,res);
-																	});
+  mongoose.connect( mongoURL , {
+		useUnifiedTopology: true, 
+		useNewUrlParser: true 
+	},function(error){
+			if(error){
+				console.log('---------: Error :----------');
+				throw error;
+			}
+			console.log('==============================');
+			console.log('---------: SUCCESS :----------');
+			console.log('==============================');
+			kittenController.getAllTheKittens(req,res);
+		});
 });
 
 module.exports = router;
